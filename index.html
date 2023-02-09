@@ -5,70 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background: #eee;
-    }
-
-    .container {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .form {
-      width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .form h1 {
-      text-align: center;
-      margin-bottom: 20px;
-
-    }
-
-    .form input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .form button {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background: #ccc;
-      cursor: pointer;
-    }
-
-    .form button:hover {
-      background: #ddd;
-    }
-
-    .form p {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-  </style>
+  <meta name="description" content="Bin2Dec is a simple web app that converts binary numbers to decimal numbers.">
+  <meta name="keywords"
+    content="binary, decimal, converter, bin2dec, bin2dec converter, bin2dec converter app, bin2dec converter web app, bin2dec converter web app">
+  <meta name="author" content="João Gustavo Soares Bispo">
+  <meta name="robots" content="index, follow">
+  <title>Bin2Dec</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -79,52 +22,11 @@
       <button id="btn">Convert</button>
       <p id="result"></p>
     </div>
+    <span class="footer">Made with ❤ by
+      <a href="https://github.com/jgbispo" target="_blank">João Gustavo</a>
+    </span>
   </div>
-  <script>
-    const btn = document.getElementById('btn');
-    const result = document.getElementById('result');
-
-    // verificando se tem no máximo 8 numero
-    const isMaxNumber = (bin) => {
-      if (bin.length > 8) {
-        return false;
-      }
-      return true;
-    }
-
-    // removendo qualquer numero que não seja 0 ou 1
-    const removeInvalidNumber = (bin) => {
-      return bin.replace(/[^0-1]/g, '');
-    }
-
-    // verificando se tem apenas 0 ou 1
-    const isOnlyZeroOrOne = (bin) => {
-      if (bin.match(/[^0-1]/g)) {
-        return false;
-      }
-      return true;
-    }
-
-    // convertendo binario para decimal
-    const bin2Dec = (bin) => {
-      let dec = 0;
-      for (let i = 0; i < bin.length; i++) {
-        dec += bin[i] * Math.pow(2, bin.length - i - 1);
-      }
-      return dec;
-    }
-
-    btn.addEventListener('click', () => {
-      let bin = document.getElementById('bin').value;
-      bin = removeInvalidNumber(bin);
-      if (isMaxNumber(bin) && isOnlyZeroOrOne(bin)) {
-        result.innerHTML = bin2Dec(bin);
-      } else {
-        result.innerHTML = 'Invalid binary number';
-      }
-    });
-
-  </script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
